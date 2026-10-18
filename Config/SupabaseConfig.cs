@@ -12,6 +12,13 @@ public static class SupabaseConfig
 
     public const string AnnoncesBucket = "annonces";
 
+    /// <summary>
+    /// Si true, refuse les points dans la partie locale des emails (contournement
+    /// pour un backend qui les rejette). False par défaut : changer de BD ou de
+    /// fournisseur d'emails ne demande qu'à basculer cette valeur, sans toucher au code.
+    /// </summary>
+    public const bool RestrictionPointsEmail = false;
+
     public static bool IsConfigured =>
         !Url.Contains("VOTRE_PROJECT_REF") && !AnonKey.Contains("VOTRE_ANON_KEY");
 }

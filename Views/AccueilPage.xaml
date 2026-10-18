@@ -14,7 +14,7 @@
             <Grid RowDefinitions="Auto,Auto,*" Padding="12,8" RowSpacing="6">
                 <views:AppHeader Grid.Row="0" />
                 <VerticalStackLayout Grid.Row="1" Spacing="6">
-                    <SearchBar Placeholder="Rechercher un véhicule..." Text="{Binding Recherche}" SearchCommand="{Binding ChargerCommand}" BackgroundColor="{StaticResource EntryGray}" />
+                    <SearchBar Placeholder="Rechercher un véhicule..." Text="{Binding Recherche}" SearchCommand="{Binding ChargerCommand}" />
                     <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
                         <Picker Title="Ville" ItemsSource="{Binding Villes}" SelectedItem="{Binding Ville}" SelectedIndexChanged="OnFiltreChanged" />
                         <Picker Grid.Column="1" Title="Boîte" ItemsSource="{Binding Boites}" SelectedItem="{Binding Boite}" SelectedIndexChanged="OnFiltreChanged" />

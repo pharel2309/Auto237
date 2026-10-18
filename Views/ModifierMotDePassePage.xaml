@@ -13,11 +13,11 @@
         <VerticalStackLayout Padding="24" Spacing="12" VerticalOptions="Start">
             <views:BackHeader Title="Mot de passe" BackCommand="{Binding RetourCommand}" />
             <Label Text="Ancien mot de passe" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="Saisis ton mot de passe actuel" Text="{Binding AncienMotDePasse}" IsPassword="True" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="Saisis ton mot de passe actuel" Text="{Binding AncienMotDePasse}" IsPassword="True" />
             <Label Text="Nouveau mot de passe" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="6 caractères minimum" Text="{Binding NouveauMotDePasse}" IsPassword="True" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="6 caractères minimum" Text="{Binding NouveauMotDePasse}" IsPassword="True" />
             <Label Text="Confirmer le nouveau mot de passe" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="Répète le nouveau mot de passe" Text="{Binding ConfirmationMotDePasse}" IsPassword="True" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="Répète le nouveau mot de passe" Text="{Binding ConfirmationMotDePasse}" IsPassword="True" />
             <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" />
             <Button Text="Changer le mot de passe" Command="{Binding ChangerCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="4" WidthRequest="260" HorizontalOptions="Center">
                 <Button.Triggers>

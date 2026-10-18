@@ -16,7 +16,7 @@
                    TextColor="{StaticResource TextGray}" LineBreakMode="WordWrap" />
             <Label Text="Email" Style="{StaticResource LabelForm}" />
             <Entry Placeholder="Ex. admin@gmail.com" Text="{Binding Email}" Keyboard="Email"
-                   BackgroundColor="{StaticResource EntryGray}" ReturnCommand="{Binding EnvoyerCommand}" />
+                   ReturnCommand="{Binding EnvoyerCommand}" />
             <Label Text="{Binding Message}" LineBreakMode="WordWrap"
                    TextColor="{StaticResource PriceRed}" IsVisible="{Binding Message, Converter={StaticResource IsNotNullConverter}}" />
             <Button Text="Envoyer le lien" Command="{Binding EnvoyerCommand}"

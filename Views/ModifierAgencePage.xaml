@@ -13,9 +13,9 @@
         <VerticalStackLayout Padding="24" Spacing="12" VerticalOptions="Start">
             <views:BackHeader Title="Infos agence" BackCommand="{Binding RetourCommand}" />
             <Label Text="Nom de l'agence" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="Ex. Auto Prestige Douala" Text="{Binding NomAgence}" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="Ex. Auto Prestige Douala" Text="{Binding NomAgence}" />
             <Label Text="Nom du responsable" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="Ex. Marie Ngo Bell" Text="{Binding Responsable}" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="Ex. Marie Ngo Bell" Text="{Binding Responsable}" />
             <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" />
             <Button Text="Enregistrer" Command="{Binding EnregistrerCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="4" WidthRequest="220" HorizontalOptions="Center">
                 <Button.Triggers>

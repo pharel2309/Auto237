@@ -18,6 +18,7 @@ public partial class ConnexionViewModel : ObservableObject
     {
         Erreur = null;
         if (Chargement) return;
+        Email = Validation.NormaliserEmail(Email);
         if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
         {
             Erreur = "Saisis ton email et ton mot de passe.";
@@ -26,6 +27,11 @@ public partial class ConnexionViewModel : ObservableObject
         if (!Validation.EmailValide(Email))
         {
             Erreur = "Cet email semble invalide, vérifie le @ et le .com — ex. admin@gmail.com";
+            return;
+        }
+        if (Auto237.Config.SupabaseConfig.RestrictionPointsEmail && !Validation.EmailAccepte(Email))
+        {
+            Erreur = "Les points ne sont pas acceptés avant le @ sur ce service — ex. particuliertest@gmail.com";
             return;
         }
         try

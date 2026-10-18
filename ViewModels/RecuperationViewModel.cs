@@ -16,15 +16,21 @@ public partial class RecuperationViewModel : ObservableObject
     {
         Message = null;
         if (Chargement) return;
+        Email = Services.Validation.NormaliserEmail(Email);
         if (string.IsNullOrWhiteSpace(Email)) { Message = "Saisis ton email."; return; }
         if (!Services.Validation.EmailValide(Email)) { Message = "Cet email semble invalide, vérifie le @ et le .com — ex. admin@gmail.com"; return; }
+        if (Auto237.Config.SupabaseConfig.RestrictionPointsEmail && !Services.Validation.EmailAccepte(Email)) { Message = "Les points ne sont pas acceptés avant le @ sur ce service — ex. particuliertest@gmail.com"; return; }
         try
         {
             Chargement = true;
             await _auth.EnvoyerLienResetAsync(Email);
             Message = "Lien de réinitialisation envoyé. Vérifie ta boîte mail.";
         }
-        catch (Exception ex) { Message = Services.ErreursSupabase.MessageAimable(ex.Message); }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"[Auto237] ResetPassword erreur brute : {ex.Message}");
+            Message = Services.ErreursSupabase.MessageAimable(ex.Message);
+        }
         finally { Chargement = false; }
     }
 

@@ -19,21 +19,21 @@
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Véhicule" Style="{StaticResource FormSectionTitle}" />
                     <Label Text="Marque" Style="{StaticResource LabelForm}" />
-                    <Entry Placeholder="Ex. Toyota" Text="{Binding Marque}" BackgroundColor="White" />
+                    <Entry Placeholder="Ex. Toyota" Text="{Binding Marque}" />
             <Label Text="Modèle" Style="{StaticResource LabelForm}" />
-            <Entry Placeholder="Ex. Corolla" Text="{Binding Modele}" BackgroundColor="{StaticResource EntryGray}" />
+            <Entry Placeholder="Ex. Corolla" Text="{Binding Modele}" />
             <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Année" Style="{StaticResource LabelForm}" />
-                    <Entry Placeholder="Ex. 2018" Text="{Binding Annee}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" />
+                    <Entry Placeholder="Ex. 2018" Text="{Binding Annee}" Keyboard="Numeric" />
                 </VerticalStackLayout>
                 <VerticalStackLayout Spacing="10" Grid.Column="1">
                     <Label Text="Ville" Style="{StaticResource LabelForm}" />
-                    <Picker Title="Choisir une ville" ItemsSource="{Binding Villes}" SelectedItem="{Binding VilleSelection}" BackgroundColor="{StaticResource EntryGray}" />
+                    <Picker Title="Choisir une ville" ItemsSource="{Binding Villes}" SelectedItem="{Binding VilleSelection}" />
                 </VerticalStackLayout>
             </Grid>
             <Label Text="Précise la ville" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVilleAutre}" />
-            <Entry Placeholder="Ex. Bertoua" Text="{Binding VilleAutre}" BackgroundColor="White" IsVisible="{Binding EstVilleAutre}" />
+            <Entry Placeholder="Ex. Bertoua" Text="{Binding VilleAutre}" IsVisible="{Binding EstVilleAutre}" />
                 </VerticalStackLayout>
             </Border>
             <Border Style="{StaticResource FormCard}">
@@ -54,16 +54,16 @@
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Prix" Style="{StaticResource FormSectionTitle}" />
             <Label Text="Prix de vente (FCFA)" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVente}" />
-            <Entry Placeholder="Ex. 4500000" Text="{Binding PrixVente}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstVente}" />
+            <Entry Placeholder="Ex. 4500000" Text="{Binding PrixVente}" Keyboard="Numeric" IsVisible="{Binding EstVente}" />
             <Label Text="Prix par jour (FCFA)" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVente, Converter={StaticResource InverseBoolConverter}}" />
-            <Entry Placeholder="Ex. 15000" Text="{Binding PrixJour}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstVente, Converter={StaticResource InverseBoolConverter}}" />
+            <Entry Placeholder="Ex. 15000" Text="{Binding PrixJour}" Keyboard="Numeric" IsVisible="{Binding EstVente, Converter={StaticResource InverseBoolConverter}}" />
                 </VerticalStackLayout>
             </Border>
             <Border Style="{StaticResource FormCard}">
                 <VerticalStackLayout Spacing="10">
                     <Label Text="Description" Style="{StaticResource FormSectionTitle}" />
             <Label Text="Description" Style="{StaticResource LabelForm}" />
-            <Editor Placeholder="État, kilométrage, options..." Text="{Binding Description}" HeightRequest="100" BackgroundColor="{StaticResource EntryGray}" />
+            <Editor Placeholder="État, kilométrage, options..." Text="{Binding Description}" HeightRequest="100" />
                 </VerticalStackLayout>
             </Border>
             <Border Style="{StaticResource FormCard}">
