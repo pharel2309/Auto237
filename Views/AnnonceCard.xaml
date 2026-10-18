@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Auto237.Views.AnnonceCard">
+    <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 16" BackgroundColor="White" Padding="0" Margin="0,6">
+        <Border.Shadow>
+            <Shadow Brush="Black" Opacity="0.1" Radius="8" Offset="0,2" />
+        </Border.Shadow>
+        <VerticalStackLayout Spacing="0">
+            <Grid HeightRequest="160">
+                <Image Source="{Binding PhotoPrincipale}" Aspect="AspectFill" BackgroundColor="{StaticResource PlaceholderGray}" />
+                <Border Style="{StaticResource ChipBase}" BackgroundColor="{StaticResource PrimaryViolet}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10">
+                    <Label Text="{Binding TypeOffre}" FontSize="11" FontAttributes="Bold" TextColor="White" />
+                </Border>
+                <Border StrokeThickness="0" BackgroundColor="Transparent" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Margin="8" Padding="0">
+                    <ImageButton Source="{Binding EstFavori, Converter={StaticResource FavoriIconConverter}}" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" VerticalOptions="Center"
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.BasculerFavoriCommand}"
+                                 CommandParameter="{Binding .}" BackgroundColor="Transparent" />
+                </Border>
+            </Grid>
+            <VerticalStackLayout Padding="12,10" Spacing="4">
+                <Label Text="{Binding Titre}" Style="{StaticResource CardTitle}" LineBreakMode="TailTruncation" MaxLines="1" />
+                <Label Text="{Binding PrixAffiche}" Style="{StaticResource CardPrice}" />
+                <Label Text="{Binding SpecsAffiche}" Style="{StaticResource CardSpecs}" LineBreakMode="TailTruncation" MaxLines="1" />
+                <Border StrokeThickness="0" BackgroundColor="{Binding EstAgence, Converter={StaticResource BadgeVendeurFondConverter}}" StrokeShape="RoundRectangle 12" Padding="10,4" HorizontalOptions="Start">
+                    <Label Text="{Binding BadgeVendeur}" FontSize="11" FontAttributes="Bold" TextColor="{Binding EstAgence, Converter={StaticResource BadgeVendeurTexteConverter}}" />
+                </Border>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

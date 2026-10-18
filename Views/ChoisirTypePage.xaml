@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.ChoisirTypePage"
+             Title="Publier"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:ChoisirTypeViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,*" Padding="12,8" RowSpacing="10">
+        <views:AppHeader Grid.Row="0" />
+        <Grid Grid.Row="1" RowDefinitions="Auto,*,Auto" RowSpacing="0">
+        <Label Grid.Row="0" Text="Que veux-tu publier ?" HorizontalOptions="Start" FontAttributes="Bold" FontSize="18" TextColor="{StaticResource TextDark}" />
+        <VerticalStackLayout Grid.Row="1" Spacing="14" VerticalOptions="Center" Padding="0,10">
+            <Border Stroke="{StaticResource PrimaryViolet}" StrokeThickness="2" StrokeShape="RoundRectangle 16" Padding="16,14" BackgroundColor="#F5F0FF">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChoisirVenteCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Vendre un véhicule" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource PrimaryViolet}" />
+                    <Label Text="Prix de vente unique en FCFA. Visible dans Vente." FontSize="13" TextColor="{StaticResource TextGray}" />
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="OU" HorizontalOptions="Center" FontSize="14" />
+            <Border Stroke="{StaticResource TabGreen}" StrokeThickness="2" StrokeShape="RoundRectangle 16" Padding="16,14" BackgroundColor="#E8FAF0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChoisirLocationCommand}" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Louer un véhicule" FontAttributes="Bold" FontSize="16" TextColor="#1B7A43" />
+                    <Label Text="Prix par jour en FCFA. Visible dans Location." FontSize="13" TextColor="{StaticResource TextGray}" />
+                </VerticalStackLayout>
+            </Border>
+            </VerticalStackLayout>
+            <Label Grid.Row="2" Text="{Binding Message}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.MesAnnoncesPage"
+             Title="Mes annonces"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:MesAnnoncesViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,*" Padding="12,8" RowSpacing="8">
+        <views:BackHeader Title="Mes annonces" BackCommand="{Binding RetourCommand}" />
+        <RefreshView Grid.Row="1" Command="{Binding ChargerCommand}" IsRefreshing="{Binding Chargement}">
+            <CollectionView ItemsSource="{Binding Annonces}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="6">
+                            <Border Stroke="{StaticResource PriceRed}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,4" BackgroundColor="#FFF3F3" HorizontalOptions="Start" IsVisible="{Binding EstVendu}">
+                                <Label Text="{Binding StatutAffiche}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource PriceRed}" />
+                            </Border>
+                            <views:AnnonceCard>
+                                <views:AnnonceCard.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OuvrirDetailCommand}" CommandParameter="{Binding Id}" />
+                                </views:AnnonceCard.GestureRecognizers>
+                            </views:AnnonceCard>
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                                <Button Text="Modifier" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ModifierCommand}" CommandParameter="{Binding Id}" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryViolet}" BorderColor="{StaticResource PrimaryViolet}" BorderWidth="1" CornerRadius="8" FontSize="12" />
+                                <Button Grid.Column="1" Text="{Binding Statut, Converter={StaticResource StatutActionConverter}}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ChangerStatutCommand}" CommandParameter="{Binding .}" BackgroundColor="{StaticResource TabGreen}" TextColor="White" CornerRadius="8" FontSize="12" />
+                                <Button Grid.Column="2" Text="Supprimer" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SupprimerCommand}" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="{StaticResource PriceRed}" BorderColor="{StaticResource PriceRed}" BorderWidth="1" CornerRadius="8" FontSize="12" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="{Binding Message}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource TextGray}" />
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

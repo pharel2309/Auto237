@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.ModifierAgencePage"
+             Title="Infos agence"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:ModifierAgenceViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12" VerticalOptions="Start">
+            <views:BackHeader Title="Infos agence" BackCommand="{Binding RetourCommand}" />
+            <Label Text="Nom de l'agence" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. Auto Prestige Douala" Text="{Binding NomAgence}" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="Nom du responsable" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. Marie Ngo Bell" Text="{Binding Responsable}" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" />
+            <Button Text="Enregistrer" Command="{Binding EnregistrerCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="4" WidthRequest="220" HorizontalOptions="Center">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Chargement}" Value="True">
+                        <Setter Property="Text" Value="Enregistrement..." />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

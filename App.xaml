@@ -1,0 +1,22 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Auto237"
+             xmlns:conv="clr-namespace:Auto237.Converters"
+             x:Class="Auto237.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <conv:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <conv:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <conv:FavoriIconConverter x:Key="FavoriIconConverter" />
+            <conv:TypeOffreCouleurConverter x:Key="TypeOffreCouleurConverter" />
+            <conv:BadgeVendeurFondConverter x:Key="BadgeVendeurFondConverter" />
+            <conv:BadgeVendeurTexteConverter x:Key="BadgeVendeurTexteConverter" />
+            <conv:StatutActionConverter x:Key="StatutActionConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

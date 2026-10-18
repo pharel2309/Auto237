@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.PublierPage"
+             Title="Publier"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:PublierViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="10">
+            <views:BackHeader Title="{Binding TitrePage}" BackCommand="{Binding RetourChoixCommand}" />
+            <Border Style="{StaticResource ChipBase}" BackgroundColor="#EDE7F6" HorizontalOptions="Center">
+                <Label Text="{Binding TypeOffre, StringFormat='Type : {0}'}" FontSize="13" FontAttributes="Bold" TextColor="{StaticResource PrimaryViolet}" />
+            </Border>
+            <Border Style="{StaticResource FormCard}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Véhicule" Style="{StaticResource FormSectionTitle}" />
+                    <Label Text="Marque" Style="{StaticResource LabelForm}" />
+                    <Entry Placeholder="Ex. Toyota" Text="{Binding Marque}" BackgroundColor="White" />
+            <Label Text="Modèle" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. Corolla" Text="{Binding Modele}" BackgroundColor="{StaticResource EntryGray}" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Année" Style="{StaticResource LabelForm}" />
+                    <Entry Placeholder="Ex. 2018" Text="{Binding Annee}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="10" Grid.Column="1">
+                    <Label Text="Ville" Style="{StaticResource LabelForm}" />
+                    <Picker Title="Choisir une ville" ItemsSource="{Binding Villes}" SelectedItem="{Binding VilleSelection}" BackgroundColor="{StaticResource EntryGray}" />
+                </VerticalStackLayout>
+            </Grid>
+            <Label Text="Précise la ville" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVilleAutre}" />
+            <Entry Placeholder="Ex. Bertoua" Text="{Binding VilleAutre}" BackgroundColor="White" IsVisible="{Binding EstVilleAutre}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource FormCard}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Boite" Style="{StaticResource FormSectionTitle}" />
+                    <Label Text="Boite" Style="{StaticResource LabelForm}" />
+                <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
+                    <CheckBox IsChecked="{Binding EstManuel}" Color="{StaticResource PrimaryViolet}" />
+                    <Label Text="Manuel" TextColor="Black" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
+                    <CheckBox IsChecked="{Binding EstAutomatique}" Color="{StaticResource PrimaryViolet}" />
+                    <Label Text="Automatique" TextColor="Black" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource FormCard}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Prix" Style="{StaticResource FormSectionTitle}" />
+            <Label Text="Prix de vente (FCFA)" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVente}" />
+            <Entry Placeholder="Ex. 4500000" Text="{Binding PrixVente}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstVente}" />
+            <Label Text="Prix par jour (FCFA)" Style="{StaticResource LabelForm}" IsVisible="{Binding EstVente, Converter={StaticResource InverseBoolConverter}}" />
+            <Entry Placeholder="Ex. 15000" Text="{Binding PrixJour}" Keyboard="Numeric" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstVente, Converter={StaticResource InverseBoolConverter}}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource FormCard}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Description" Style="{StaticResource FormSectionTitle}" />
+            <Label Text="Description" Style="{StaticResource LabelForm}" />
+            <Editor Placeholder="État, kilométrage, options..." Text="{Binding Description}" HeightRequest="100" BackgroundColor="{StaticResource EntryGray}" />
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource FormCard}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Photos" Style="{StaticResource FormSectionTitle}" />
+            <HorizontalStackLayout Spacing="16">
+                <Label Text="Photos" Style="{StaticResource LabelForm}" />
+                <Button Text="Ajouter une photo" Command="{Binding AjouterPhotoCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PlaceholderGray}" TextColor="Black" CornerRadius="4" />
+            </HorizontalStackLayout>
+            <Label Text="{Binding CompteurPhotos}" FontSize="12" TextColor="{StaticResource TextGray}" IsVisible="{Binding HasPhotos}" />
+            <CollectionView ItemsSource="{Binding PhotosLocales}" HeightRequest="{Binding PhotosHauteur}" IsVisible="{Binding HasPhotos}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="6" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid WidthRequest="90" HeightRequest="90">
+                            <Image Source="{Binding .}" WidthRequest="90" HeightRequest="90" Aspect="AspectFill" BackgroundColor="{StaticResource PlaceholderGray}" />
+                            <Button Text="x" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RetirerPhotoCommand}" CommandParameter="{Binding .}"
+                                    BackgroundColor="Transparent" TextColor="Red" FontSize="25" FontAttributes="Bold"
+                                    WidthRequest="26" HeightRequest="26" CornerRadius="13" Padding="0"
+                                    HorizontalOptions="End" VerticalOptions="Start"  />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="{Binding Message}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" />
+            <Button Text="Publier" Command="{Binding PublierCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource TabYellow}" TextColor="Black" CornerRadius="4" HorizontalOptions="End" WidthRequest="140">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Chargement}" Value="True">
+                        <Setter Property="Text" Value="Publication..." />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

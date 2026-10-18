@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.ModifierTelephonePage"
+             Title="Modifier téléphone"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:ModifierTelephoneViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12" VerticalOptions="Start">
+            <views:BackHeader Title="Téléphone" BackCommand="{Binding RetourCommand}" />
+            <Label Text="Numéro de téléphone" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. 690000000" Text="{Binding Telephone}" Keyboard="Telephone" BackgroundColor="{StaticResource EntryGray}" />
+            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                <CheckBox IsChecked="{Binding EstMemeNumero}" Color="{StaticResource PrimaryViolet}" />
+                <Label Text="Mon numéro est aussi mon WhatsApp" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Label Text="Numéro WhatsApp" Style="{StaticResource LabelForm}" IsVisible="{Binding EstChampWhatsappVisible}" />
+            <Entry Placeholder="Ex. 690000000" Text="{Binding TelephoneWhatsapp}" Keyboard="Telephone" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstChampWhatsappVisible}" />
+            <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" LineBreakMode="WordWrap" />
+            <Button Text="Enregistrer" Command="{Binding EnregistrerCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="4" WidthRequest="220" HorizontalOptions="Center">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Chargement}" Value="True">
+                        <Setter Property="Text" Value="Enregistrement..." />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Auto237.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Auto237.Views"
+    Title="Auto237"
+    Shell.NavBarIsVisible="False">
+
+    <!-- Demarrage neutre : decide accueil vs connexion, sans flash -->
+    <ShellContent
+        Title="Démarrage"
+        ContentTemplate="{DataTemplate views:DemarragePage}"
+        Route="demarrage"
+        FlyoutItemIsVisible="False" />
+    <!-- Auth hors TabBar -->
+    <ShellContent
+        Title="Connexion"
+        ContentTemplate="{DataTemplate views:ConnexionPage}"
+        Route="connexion" />
+    <ShellContent
+        Title="Inscription"
+        ContentTemplate="{DataTemplate views:InscriptionPage}"
+        Route="inscription" />
+    <ShellContent
+        Title="Recuperation"
+        ContentTemplate="{DataTemplate views:RecuperationPage}"
+        Route="recuperation" />
+    <ShellContent
+        Title="Modifier téléphone"
+        ContentTemplate="{DataTemplate views:ModifierTelephonePage}"
+        Route="modifier-telephone" />
+    <ShellContent
+        Title="Modifier mot de passe"
+        ContentTemplate="{DataTemplate views:ModifierMotDePassePage}"
+        Route="modifier-motdepasse" />
+    <ShellContent
+        Title="Infos agence"
+        ContentTemplate="{DataTemplate views:ModifierAgencePage}"
+        Route="modifier-agence" />
+    <ShellContent
+        Title="Profil"
+        ContentTemplate="{DataTemplate views:ProfilPage}"
+        Route="profil" />
+    <ShellContent
+        Title="Mes annonces"
+        ContentTemplate="{DataTemplate views:MesAnnoncesPage}"
+        Route="mesannonces" />
+    <ShellContent
+        Title="Formulaire annonce"
+        ContentTemplate="{DataTemplate views:PublierPage}"
+        Route="publier-form" />
+
+    <!-- TabBar fidele Figma : 3 cases, actif vert / rouge / jaune -->
+    <TabBar>
+        <ShellContent
+            Title="Accueil"
+            Icon="home.svg"
+            ContentTemplate="{DataTemplate views:AccueilPage}"
+            Route="accueil" />
+        <ShellContent
+            Title="Publier"
+            Icon="car.svg"
+            ContentTemplate="{DataTemplate views:ChoisirTypePage}"
+            Route="publier" />
+        <ShellContent
+            Title="Favoris"
+            Icon="heart.svg"
+            ContentTemplate="{DataTemplate views:FavorisPage}"
+            Route="favoris" />
+    </TabBar>
+
+</Shell>
+

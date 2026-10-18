@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.DetailPage"
+             Title="Détail"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:DetailViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Spacing="8" Padding="12">
+            <views:BackHeader Title="Détail" BackCommand="{Binding RetourCommand}" />
+            <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="0" BackgroundColor="White">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.1" Radius="8" Offset="0,2" />
+                </Border.Shadow>
+                <VerticalStackLayout Spacing="0">
+                    <Grid HeightRequest="240">
+                        <CarouselView ItemsSource="{Binding PhotosUrls}" Position="{Binding Position}" IndicatorView="ind" Loop="False" BackgroundColor="{StaticResource PlaceholderGray}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding .}" Aspect="AspectFill" BackgroundColor="{StaticResource PlaceholderGray}" />
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                            <CarouselView.EmptyView>
+                                <BoxView HeightRequest="240" Color="{StaticResource PlaceholderGray}" />
+                            </CarouselView.EmptyView>
+                        </CarouselView>
+                        <Border Style="{StaticResource ChipBase}" BackgroundColor="{StaticResource PrimaryViolet}" HorizontalOptions="Start" VerticalOptions="Start" Margin="10">
+                            <Label Text="{Binding Vehicule.TypeOffre}" FontSize="11" FontAttributes="Bold" TextColor="White" />
+                        </Border>
+                        <Border StrokeThickness="0" BackgroundColor="#CCFFFFFF" StrokeShape="RoundRectangle 20" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Margin="8" Padding="0">
+                            <ImageButton Source="{Binding Vehicule.EstFavori, Converter={StaticResource FavoriIconConverter}}" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding BasculerFavoriCommand}" BackgroundColor="Transparent" />
+                        </Border>
+                    </Grid>
+                    <IndicatorView x:Name="ind" HorizontalOptions="Center" Margin="0,8" />
+                    <VerticalStackLayout Padding="14,4,14,14" Spacing="6">
+                        <Label Text="{Binding Vehicule.PrixAffiche}" FontSize="22" FontAttributes="Bold" TextColor="{StaticResource PriceRed}" />
+                        <Label Text="{Binding Vehicule.Titre}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextDark}" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 16" Padding="12,10" BackgroundColor="White">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Border Stroke="{StaticResource PrimaryViolet}" StrokeThickness="2" StrokeShape="RoundRectangle 28" WidthRequest="56" HeightRequest="56" Padding="0" HorizontalOptions="Start" VerticalOptions="Center">
+                        <Image Source="{Binding PhotoVendeurAffichee}" WidthRequest="52" HeightRequest="52" Aspect="AspectFill" BackgroundColor="{StaticResource PlaceholderGray}" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Border>
+                    <VerticalStackLayout Spacing="4" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding NomVendeurAffiche}" FontAttributes="Bold" FontSize="14" TextColor="{StaticResource TextDark}" />
+                        <Border StrokeThickness="0" BackgroundColor="{Binding Vehicule.EstAgence, Converter={StaticResource BadgeVendeurFondConverter}}" StrokeShape="RoundRectangle 12" Padding="10,4" HorizontalOptions="Start">
+                            <Label Text="{Binding Vehicule.BadgeVendeur}" FontSize="11" FontAttributes="Bold" TextColor="{Binding Vehicule.EstAgence, Converter={StaticResource BadgeVendeurTexteConverter}}" />
+                        </Border>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Border>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Ville" Style="{StaticResource CardSpecs}" />
+                        <Label Text="{Binding Vehicule.Ville}" FontAttributes="Bold" FontSize="14" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Boite" Style="{StaticResource CardSpecs}" />
+                        <Label Text="{Binding Vehicule.Boite}" FontAttributes="Bold" FontSize="14" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Année" Style="{StaticResource CardSpecs}" />
+                        <Label Text="{Binding Vehicule.Annee}" FontAttributes="Bold" FontSize="14" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="Type" Style="{StaticResource CardSpecs}" />
+                        <Label Text="{Binding Vehicule.TypeOffre}" FontAttributes="Bold" FontSize="14" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+            <Border Stroke="{StaticResource Gray100}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="#FAFAFA" IsVisible="{Binding Vehicule.Description, Converter={StaticResource IsNotNullConverter}}">
+                <Label Text="{Binding Vehicule.Description}" FontSize="14" TextColor="{StaticResource TextDark}" />
+            </Border>
+            <Border Stroke="{StaticResource PrimaryViolet}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="#F5F0FF" IsVisible="{Binding EstProprietaire}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="C'est ton annonce" FontAttributes="Bold" FontSize="14" TextColor="{StaticResource PrimaryViolet}" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Text="Modifier" Command="{Binding ModifierCommand}" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryViolet}" BorderColor="{StaticResource PrimaryViolet}" BorderWidth="1" CornerRadius="8" FontSize="12" />
+                        <Button Grid.Column="1" Text="{Binding TexteStatutAction}" Command="{Binding ChangerStatutCommand}" BackgroundColor="{StaticResource TabGreen}" TextColor="White" CornerRadius="8" FontSize="12" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            <Border Stroke="{StaticResource PriceRed}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12,10" BackgroundColor="#FFF3F3" IsVisible="{Binding EstVenduTiers}">
+                <Label Text="{Binding TexteStatut}" FontAttributes="Bold" FontSize="14" TextColor="{StaticResource PriceRed}" HorizontalOptions="Center" />
+            </Border>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10" IsVisible="{Binding ContactVisible}">
+                <Button  Text="WhatsApp" Command="{Binding WhatsAppCommand}" IsVisible="{Binding AWhatsApp}" BackgroundColor="#25D366" TextColor="White" CornerRadius="12" FontAttributes="Bold" />
+                <Button Grid.Column="1" Text="Appeler" Command="{Binding AppelerCommand}" BackgroundColor="{StaticResource TabGreen}" TextColor="White" CornerRadius="12" FontAttributes="Bold" />
+            </Grid>
+            <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

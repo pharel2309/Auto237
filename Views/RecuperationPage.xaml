@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.RecuperationPage"
+             Title="Mot de passe oublié"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:RecuperationViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14" VerticalOptions="Start">
+            <views:BackHeader Title="Mot de passe oublié" BackCommand="{Binding RetourCommand}" />
+            <Label Text="Saisis ton email, on t'envoie un lien de réinitialisation."
+                   TextColor="{StaticResource TextGray}" LineBreakMode="WordWrap" />
+            <Label Text="Email" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. admin@gmail.com" Text="{Binding Email}" Keyboard="Email"
+                   BackgroundColor="{StaticResource EntryGray}" ReturnCommand="{Binding EnvoyerCommand}" />
+            <Label Text="{Binding Message}" LineBreakMode="WordWrap"
+                   TextColor="{StaticResource PriceRed}" IsVisible="{Binding Message, Converter={StaticResource IsNotNullConverter}}" />
+            <Button Text="Envoyer le lien" Command="{Binding EnvoyerCommand}"
+                    IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}"
+                    BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White"
+                    CornerRadius="8" HeightRequest="52" HorizontalOptions="Fill">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Chargement}" Value="True">
+                        <Setter Property="Text" Value="Envoi..." />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

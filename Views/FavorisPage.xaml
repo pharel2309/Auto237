@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.FavorisPage"
+             Title="Favoris"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:FavorisViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,Auto,*" Padding="12,8" RowSpacing="8">
+        <views:AppHeader Grid.Row="0" />
+        <Label Grid.Row="1" Text="Mes favoris" FontSize="20" FontAttributes="Bold" HorizontalOptions="Start" />
+        <RefreshView Grid.Row="2" Command="{Binding ChargerCommand}" IsRefreshing="{Binding Chargement}">
+            <CollectionView ItemsSource="{Binding Favoris}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:AnnonceCard>
+                            <views:AnnonceCard.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OuvrirDetailCommand}" CommandParameter="{Binding Id}" />
+                            </views:AnnonceCard.GestureRecognizers>
+                        </views:AnnonceCard>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout Padding="24" Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Label Text="{Binding MessageVide}" HorizontalOptions="Center" TextColor="{StaticResource TextGray}"
+                               IsVisible="{Binding EstVide}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" />
+                        <Label Text="{Binding Message}" HorizontalOptions="Center" TextColor="{StaticResource PriceRed}"
+                               IsVisible="{Binding EstErreur}" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" />
+                        <Button Text="Réessayer" Command="{Binding ChargerCommand}" IsVisible="{Binding EstErreur}"
+                                BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="8" HorizontalOptions="Center" />
+                        <Button Text="Se reconnecter" Command="{Binding SeReconnecterCommand}" IsVisible="{Binding SessionExpiree}"
+                                BackgroundColor="{StaticResource PriceRed}" TextColor="White" CornerRadius="8" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

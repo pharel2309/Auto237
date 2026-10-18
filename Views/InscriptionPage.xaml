@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.InscriptionPage"
+             Title="Inscription"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:InscriptionViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="12" VerticalOptions="Center">
+            <views:LogoCameroun Taille="28" />
+            <Label Text="INSCRIPTION" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16" TextColor="Black" />
+            <Border Stroke="{StaticResource PrimaryViolet}" StrokeThickness="1.5" StrokeShape="RoundRectangle 16" Padding="4" BackgroundColor="White">
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                    <Button Text="Particulier" Command="{Binding ChoisirParticulierCommand}" BackgroundColor="#EDE7F6" TextColor="{StaticResource PrimaryViolet}" CornerRadius="12" FontAttributes="Bold" IsVisible="{Binding EstAgence}" />
+                    <Button Text="✓ Particulier" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="12" FontAttributes="Bold" IsVisible="{Binding EstParticulier}" />
+                    <Button Grid.Column="1" Text="Agence" Command="{Binding ChoisirAgenceCommand}" BackgroundColor="#EDE7F6" TextColor="{StaticResource PrimaryViolet}" CornerRadius="12" FontAttributes="Bold" IsVisible="{Binding EstParticulier}" />
+                    <Button Grid.Column="1" Text="✓ Agence" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="12" FontAttributes="Bold" IsVisible="{Binding EstAgence}" />
+                </Grid>
+            </Border>
+            <Label Text="Tu t'inscris comme Particulier" HorizontalOptions="Center" FontSize="12" TextColor="{StaticResource TextGray}" IsVisible="{Binding EstParticulier}" />
+            <Label Text="Tu t'inscris comme Agence" HorizontalOptions="Center" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource PrimaryViolet}" IsVisible="{Binding EstAgence}" />
+            <Label Text="Nom de l'agence" Style="{StaticResource LabelForm}" IsVisible="{Binding EstAgence}" />
+            <Entry Placeholder="Ex. Auto Prestige Douala" Text="{Binding NomAgence}" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstAgence}" />
+            <Label Text="Nom du responsable" Style="{StaticResource LabelForm}" IsVisible="{Binding EstAgence}" />
+            <Entry Placeholder="Ex. Marie Ngo Bell" Text="{Binding Nom}" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstAgence}" />
+            <Label Text="Nom complet" Style="{StaticResource LabelForm}" IsVisible="{Binding EstParticulier}" />
+            <Entry Placeholder="Ex. Jean Mbarga" Text="{Binding Nom}" BackgroundColor="{StaticResource EntryGray}" IsVisible="{Binding EstParticulier}" />
+            <Label Text="Email" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. admin@gmail.com" Text="{Binding Email}" Keyboard="Email" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="Téléphone" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Ex. 690000000" Text="{Binding Telephone}" Keyboard="Telephone" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="Mot de passe" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="6 caractères minimum" Text="{Binding Password}" IsPassword="True" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="Confirmer mot de passe" Style="{StaticResource LabelForm}" />
+            <Entry Placeholder="Répète le mot de passe" Text="{Binding Confirmation}" IsPassword="True" BackgroundColor="{StaticResource EntryGray}" />
+            <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" />
+            <Button Text="S'inscrire" Command="{Binding InscrireCommand}" IsEnabled="{Binding Chargement, Converter={StaticResource InverseBoolConverter}}" BackgroundColor="{StaticResource PrimaryViolet}" TextColor="White" CornerRadius="4" WidthRequest="160" HorizontalOptions="Center">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Chargement}" Value="True">
+                        <Setter Property="Text" Value="Inscription..." />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4" VerticalOptions="Center">
+                <Label Text="Déjà un compte ?" VerticalOptions="Center" TextColor="Black" />
+                <Button Text="Se connecter" Command="{Binding RetourConnexionCommand}" AutomationId="LienConnexion"
+                        BackgroundColor="Transparent" TextColor="{StaticResource TitleBlue}" Padding="0,4" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

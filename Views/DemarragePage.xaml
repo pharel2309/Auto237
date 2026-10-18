@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Auto237.ViewModels"
+             xmlns:views="clr-namespace:Auto237.Views"
+             x:Class="Auto237.Views.DemarragePage"
+             Title="Démarrage"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vm:DemarrageViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center" HorizontalOptions="Center">
+        <views:LogoCameroun Taille="36" />
+        <Label Text="{Binding Erreur}" TextColor="{StaticResource PriceRed}" IsVisible="{Binding Erreur, Converter={StaticResource IsNotNullConverter}}" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
