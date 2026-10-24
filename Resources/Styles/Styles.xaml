@@ -420,6 +420,6 @@
 
     <!-- Safe area : repousse le contenu sous la barre de statut / encoche (edge-to-edge) -->
     <Style TargetType="ContentPage">
-        <Setter Property="SafeAreaEdges" Value="Top" />
+        <Setter Property="SafeAreaEdges" Value="Container" />
     </Style>
 </ResourceDictionary>
