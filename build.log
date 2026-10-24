@@ -1,0 +1,35 @@
+  Identification des projets à restaurer...
+  Tous les projets sont à jour pour la restauration.
+  XAML source generation is enabled (MauiXamlInflator=SourceGen). This generates C# code from XAML at compile time for better performance. To disable, remove the MauiXamlInflator line from your .csproj file (reverts to configuration-based defaults: Runtime in Debug, XamlC in Release).
+D:\Auto237\Services\AuthService.cs(86,77): warning CS8604: Existence possible d'un argument de référence null pour le paramètre 'value' dans 'Task ISecureStorage.SetAsync(string key, string value)'. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(105,68): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(109,87): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(116,108): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AnnonceService.cs(278,26): warning CS0618: 'IMediaPicker.PickPhotoAsync(MediaPickerOptions?)' est obsolète : 'Switch to PickPhotosAsync which also allows multiple selections.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\obj\Debug\net10.0-windows10.0.19041.0\win-x64\intermediatexaml\Microsoft.Maui.Controls.SourceGen\Microsoft.Maui.Controls.SourceGen.XamlGenerator\Views_DetailPage.xaml.xsg.cs(854,97): warning CS0618: 'LayoutOptions.FillAndExpand' est obsolète : 'The StackLayout expansion options are deprecated; please use a Grid instead.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(86,77): warning CS8604: Existence possible d'un argument de référence null pour le paramètre 'value' dans 'Task ISecureStorage.SetAsync(string key, string value)'. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(105,68): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(109,87): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(116,108): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AnnonceService.cs(278,26): warning CS0618: 'IMediaPicker.PickPhotoAsync(MediaPickerOptions?)' est obsolète : 'Switch to PickPhotosAsync which also allows multiple selections.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\obj\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Controls.SourceGen\Microsoft.Maui.Controls.SourceGen.XamlGenerator\Views_DetailPage.xaml.xsg.cs(854,97): warning CS0618: 'LayoutOptions.FillAndExpand' est obsolète : 'The StackLayout expansion options are deprecated; please use a Grid instead.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+  Auto237 -> D:\Auto237\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Auto237.dll
+
+La génération a réussi.
+
+D:\Auto237\Services\AuthService.cs(86,77): warning CS8604: Existence possible d'un argument de référence null pour le paramètre 'value' dans 'Task ISecureStorage.SetAsync(string key, string value)'. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(105,68): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(109,87): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(116,108): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AnnonceService.cs(278,26): warning CS0618: 'IMediaPicker.PickPhotoAsync(MediaPickerOptions?)' est obsolète : 'Switch to PickPhotosAsync which also allows multiple selections.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\obj\Debug\net10.0-windows10.0.19041.0\win-x64\intermediatexaml\Microsoft.Maui.Controls.SourceGen\Microsoft.Maui.Controls.SourceGen.XamlGenerator\Views_DetailPage.xaml.xsg.cs(854,97): warning CS0618: 'LayoutOptions.FillAndExpand' est obsolète : 'The StackLayout expansion options are deprecated; please use a Grid instead.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(86,77): warning CS8604: Existence possible d'un argument de référence null pour le paramètre 'value' dans 'Task ISecureStorage.SetAsync(string key, string value)'. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(105,68): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(109,87): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AuthService.cs(116,108): warning CS8602: Déréférencement d'une éventuelle référence null. [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\Services\AnnonceService.cs(278,26): warning CS0618: 'IMediaPicker.PickPhotoAsync(MediaPickerOptions?)' est obsolète : 'Switch to PickPhotosAsync which also allows multiple selections.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+D:\Auto237\obj\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Controls.SourceGen\Microsoft.Maui.Controls.SourceGen.XamlGenerator\Views_DetailPage.xaml.xsg.cs(854,97): warning CS0618: 'LayoutOptions.FillAndExpand' est obsolète : 'The StackLayout expansion options are deprecated; please use a Grid instead.' [D:\Auto237\Auto237.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+    12 Avertissement(s)
+    0 Erreur(s)
+
+Temps écoulé 00:00:29.99

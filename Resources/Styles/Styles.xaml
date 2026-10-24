@@ -418,4 +418,8 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <!-- Safe area : repousse le contenu sous la barre de statut / encoche (edge-to-edge) -->
+    <Style TargetType="ContentPage">
+        <Setter Property="SafeAreaEdges" Value="Top" />
+    </Style>
 </ResourceDictionary>

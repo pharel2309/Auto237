@@ -71,6 +71,11 @@ public class Vehicule
         string.Equals(Statut, "vendu", StringComparison.OrdinalIgnoreCase)
         || string.Equals(Statut, "loue", StringComparison.OrdinalIgnoreCase);
     [JsonIgnore]
+    public string TexteStatutAction =>
+        EstVendu ? "Remettre en ligne"
+        : string.Equals(TypeOffre, "location", StringComparison.OrdinalIgnoreCase) ? "Marquer comme loué"
+        : "Marquer comme vendu";
+    [JsonIgnore]
     public string StatutAffiche =>
         string.Equals(Statut, "loue", StringComparison.OrdinalIgnoreCase) ? "Loue"
         : string.Equals(Statut, "vendu", StringComparison.OrdinalIgnoreCase) ? "Vendu"

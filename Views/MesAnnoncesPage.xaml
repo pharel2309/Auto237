@@ -16,19 +16,42 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Spacing="6">
-                            <Border Stroke="{StaticResource PriceRed}" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="10,4" BackgroundColor="#FFF3F3" HorizontalOptions="Start" IsVisible="{Binding EstVendu}">
-                                <Label Text="{Binding StatutAffiche}" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource PriceRed}" />
-                            </Border>
                             <views:AnnonceCard>
                                 <views:AnnonceCard.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OuvrirDetailCommand}" CommandParameter="{Binding Id}" />
                                 </views:AnnonceCard.GestureRecognizers>
                             </views:AnnonceCard>
-                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
-                                <Button Text="Modifier" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ModifierCommand}" CommandParameter="{Binding Id}" BackgroundColor="Transparent" TextColor="{StaticResource PrimaryViolet}" BorderColor="{StaticResource PrimaryViolet}" BorderWidth="1" CornerRadius="8" FontSize="12" />
-                                <Button Grid.Column="1" Text="{Binding Statut, Converter={StaticResource StatutActionConverter}}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ChangerStatutCommand}" CommandParameter="{Binding .}" BackgroundColor="{StaticResource TabGreen}" TextColor="White" CornerRadius="8" FontSize="12" />
-                                <Button Grid.Column="2" Text="Supprimer" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SupprimerCommand}" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="{StaticResource PriceRed}" BorderColor="{StaticResource PriceRed}" BorderWidth="1" CornerRadius="8" FontSize="12" />
-                            </Grid>
+                            <VerticalStackLayout Spacing="6">
+                                <Button Text="{Binding TexteStatutAction}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ChangerStatutCommand}"
+                                        CommandParameter="{Binding .}"
+                                        BackgroundColor="{StaticResource TabGreen}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        FontSize="12"
+                                        HorizontalOptions="Fill" />
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                    <Button Text="Modifier"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ModifierCommand}"
+                                            CommandParameter="{Binding Id}"
+                                            BackgroundColor="Transparent"
+                                            TextColor="{StaticResource PrimaryViolet}"
+                                            BorderColor="{StaticResource PrimaryViolet}"
+                                            BorderWidth="1"
+                                            CornerRadius="8"
+                                            FontSize="12" />
+                                    <Button Grid.Column="1" Text="Supprimer"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SupprimerCommand}"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="Transparent"
+                                            TextColor="{StaticResource PriceRed}"
+                                            BorderColor="{StaticResource PriceRed}"
+                                            BorderWidth="1"
+                                            CornerRadius="8"
+                                            FontSize="12" />
+                                </Grid>
+                            </VerticalStackLayout>
+
                         </VerticalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
